@@ -1,0 +1,15 @@
+<div>
+  Results for {{ label }}
+  <br />
+  <div class="map" ref="map"></div>
+  <div v-if="homes.length > 0">
+    <nuxt-link v-for="home in homes" :key="home.objectID" :to="`/home/${home.objectID}`">
+      <home-row
+        :home="home"
+        @mouseover.native="highlightMarker(home.objectID, true)"
+        @mouseout.native="highlightMarker(home.objectID, false)"
+      />
+    </nuxt-link>
+  </div>
+  <div v-else>No results found</div>
+</div>
