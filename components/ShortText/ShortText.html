@@ -1,0 +1,5 @@
+<span>
+  {{ displayText }}
+  <button v-if="isTooLong && !isExpanded" class="link" type="button" v-on:click="isExpanded = true">read more</button>
+  <button v-if="isTooLong && isExpanded" class="link" type="button" v-on:click="isExpanded = false">read less</button>
+</span>
