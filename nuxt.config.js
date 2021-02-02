@@ -16,6 +16,9 @@ export default {
         prefetchLinks: false,
     },
     plugins:[ '~/plugins/maps.client', '~/plugins/dataApi' ],
-    modules:[],
+  modules: [
+    // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv'
+  ],
   buildModules: ['@nuxt/typescript-build', '@nuxtjs/tailwindcss']
 }
