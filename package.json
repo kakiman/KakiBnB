@@ -1,18 +1,28 @@
 {
   "name": "mastering-nuxt",
-  "dependencies": {
-    "nuxt": "2.14.7"
-  },
   "version": "0.0.1",
   "description": "Projet formation nuxt",
   "author": "Aurélien Duriez",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start"
+    "dev": "nuxt-ts",
+    "serve": "nuxt",
+    "build": "nuxt-ts build",
+    "generate": "nuxt-ts generate",
+    "start": "nuxt-ts start",
+  },
+  "dependencies": {
+    "nuxt": "2.14.7",
+    "nuxt-property-decorator": "^2.9.1",
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "3.4.2"
+    "@nuxt/types": "^2.14.12",
+    "@nuxt/typescript-build": "^2.0.4",
+    "@nuxt/typescript-runtime": "^2.0.1",
+    "@nuxtjs/tailwindcss": "3.4.2",
+    "typescript": "^4.1.3"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   }
 }
