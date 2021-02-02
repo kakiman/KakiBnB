@@ -12,6 +12,20 @@
     "start": "nuxt-ts start",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix . --debug --ext .html,.ts,.js,.vue ",
+    "release": "npm version -m \"chore(release): [ci skip] bump to %s version \"",
+    "release-patch": "npm version patch -m \"chore(patch): [ci skip] bump to %s version\"",
+    "version": "auto-changelog && git add CHANGELOG.md"
+  },
+  "auto-changelog": {
+    "package": true,
+    "hideCredit": true,
+    "template": "changelog-template.hbs",
+    "issueUrl": "https://jira.worldline.com/browse/{id}",
+    "issuePattern": "[A-Z]+-\\d+",
+    "replaceText": {
+      "([A-Z]+-\\d+)": "[`$1`](https://jira.worldline.com/browse/$1)"
+    },
+    "commitLimit": false
   },
   "dependencies": {
     "nuxt": "2.14.7",
@@ -23,6 +37,7 @@
     "@nuxt/typescript-runtime": "^2.0.1",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/tailwindcss": "3.4.2",
+    "auto-changelog": "^2.2.1",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-loader": "^4.0.2",
