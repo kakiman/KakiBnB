@@ -3,6 +3,10 @@
   "dependencies": {
     "nuxt": "2.14.7"
   },
+  "version": "0.0.1",
+  "description": "Projet formation nuxt",
+  "author": "Aurélien Duriez",
+  "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
