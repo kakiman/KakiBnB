@@ -1,0 +1,14 @@
+!**/.eslintrc*
+node_modules*
+static/**
+assets/**
+backstop_data
+dist
+backstop_data/**/*.js
+*.svg
+*.ico
+*.json
+.gitignore
+*.md
+*.log
+*.lock
