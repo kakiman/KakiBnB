@@ -1,0 +1,1 @@
+export { NuxtApiInstance } from './nuxtApiInstance'
