@@ -17,6 +17,8 @@ export default {
     },
     plugins:[ '~/plugins/maps.client', '~/plugins/dataApi' ],
   modules: [
+    // Doc: https://nuxt-community.github.io/nuxt-i18n/
+    'nuxt-i18n',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
