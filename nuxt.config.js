@@ -1,18 +1,11 @@
 process.env.VUE_APP_VERSION = require('./package.json').version
 
 export default {
-    components: true,
-    head: {
-        titleTemplate: "Mastering Nuxt: %s",
-        htmlAttrs: {
-            lang: "en"
-        },
-        bodyAttrs:{
-            class: ["my-style"]
-        },
-        meta: [{
-            charset: "utf-8",
-        }]
+  ssr: false,
+  telemetry: false, // Nouveau dans Nuxt 2.13 https://github.com/nuxt/telemetry#opting-out
+  server: {
+    port: 3001 // pour recette
+  },
   env: {
     isLocal: process.env.NODE_ENV === 'local',
     appVersion: process.env.VUE_APP_VERSION,
@@ -20,11 +13,24 @@ export default {
     algoliaApiKey: process.env.ALGOLIA_API_KEY,
     algoliaWsURL: 'https://' + process.env.ALGOLIA_APP_ID + '-dsn.algolia.net/1/indexes/'
   },
+  components: true,
+  head: {
+    titleTemplate: 'Mastering Nuxt: %s',
+    htmlAttrs: {
+      lang: 'en'
     },
-    router: {
-        prefetchLinks: false,
+    bodyAttrs: {
+      class: ['my-style']
     },
-    plugins:[ '~/plugins/maps.client', '~/plugins/dataApi' ],
+    meta: [
+      {
+        charset: 'utf-8'
+      }
+    ]
+  },
+  router: {
+    prefetchLinks: false
+  },
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
