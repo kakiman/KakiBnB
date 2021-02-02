@@ -31,6 +31,7 @@ export default {
   router: {
     prefetchLinks: false
   },
+  plugins: ['~/plugins/maps.client', '~/plugins/api-accessor'],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
