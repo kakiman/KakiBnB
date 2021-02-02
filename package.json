@@ -33,6 +33,7 @@
     "nuxt": "2.14.7",
     "nuxt-i18n": "^6.18.0",
     "nuxt-property-decorator": "^2.9.1",
+    "vee-validate": "^3.3.8"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
