@@ -22,6 +22,10 @@ export default {
     '@nuxtjs/proxy',
     // Doc: https://auth.nuxtjs.org/
     '@nuxtjs/auth-next',
+    // Doc: https://github.com/nuxt-community/date-fns-module
+    '@nuxtjs/date-fns',
+    // Doc: https://github.com/nuxt-community/device-module
+    '@nuxtjs/device',
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     'nuxt-i18n',
     // Doc: https://github.com/nuxt-community/dotenv-module
