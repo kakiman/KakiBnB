@@ -7,11 +7,18 @@ export function createdSlug(name: string): string {
     .replace('/-{2,}/g', '-')
 }
 
-export async function unWrap(response: { json?: any; ok?: any; status?: any; statusText?: any }) {
-  const json = await response.json()
+export function unWrap(response: { json?: any; ok?: any; status?: any; statusText?: any }) {
   const { ok, status, statusText } = response
   return {
-    json,
+    ok,
+    status,
+    statusText
+  }
+}
+
+export function getOkResponse(response: { json?: any; ok?: any; status?: any; statusText?: any }) {
+  const { ok, status, statusText } = response
+  return {
     ok,
     status,
     statusText
@@ -22,7 +29,6 @@ export function getErrorResponse(error: { message: any }) {
   return {
     ok: false,
     status: 500,
-    statusText: error.message,
-    json: {}
+    statusText: error.message
   }
 }
