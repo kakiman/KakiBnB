@@ -9,9 +9,7 @@ export default {
   env: {
     isLocal: process.env.NODE_ENV === 'local',
     appVersion: process.env.VUE_APP_VERSION,
-    algoliaAppId: process.env.ALGOLIA_APP_ID,
-    algoliaApiKey: process.env.ALGOLIA_API_KEY,
-    algoliaWsURL: 'https://' + process.env.ALGOLIA_APP_ID + '-dsn.algolia.net/1/indexes/'
+    algoliaWsURL: 'https://APP_ID-dsn.algolia.net/1/indexes/'
   },
   components: true,
   head: {
@@ -43,9 +41,11 @@ export default {
     // Doc: https://github.com/nuxt-community/device-module
     '@nuxtjs/device',
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
-    'nuxt-i18n',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    'nuxt-i18n'
   ],
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/tailwindcss']
+  buildModules: ['@nuxtjs/dotenv', '@nuxt/typescript-build', '@nuxtjs/tailwindcss'],
+  dotenv: {
+    path: './env/',
+    filename: `.env.${process.env.NODE_ENV}`
+  },
 }
