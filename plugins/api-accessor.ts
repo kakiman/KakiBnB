@@ -25,12 +25,13 @@ declare module 'vuex/types/index' {
 }
 
 const accessor: Plugin = (ctx, inject) => {
+  ctx.env.algoliaWsURL = ctx.env.algoliaWsURL.replace(/([APP_ID])\w+/g, ctx.env.ALGOLIA_APP_ID)
   const nuxtApiInstance: INuxtApiInstance = new NuxtApiInstance(
     ctx.app.$axios,
     ctx.env.isLocal,
     ctx.env.algoliaWsURL,
-    ctx.env.algoliaAppId,
-    ctx.env.algoliaApiKey
+    ctx.env.ALGOLIA_APP_ID,
+    ctx.env.ALGOLIA_API_KEY
   )
   inject('api', nuxtApiInstance)
   initializeApi(nuxtApiInstance, ctx.$dateFns, ctx.app.i18n)
