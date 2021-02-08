@@ -17,9 +17,9 @@ export function unWrap(response: { json?: any; ok?: any; status?: any; statusTex
 }
 
 export function getOkResponse(response: { json?: any; ok?: any; status?: any; statusText?: any }) {
-  const { ok, status, statusText } = response
+  const { status, statusText } = response
   return {
-    ok,
+    ok: true,
     status,
     statusText
   }
