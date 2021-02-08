@@ -83,4 +83,20 @@ export default {
       alwaysRedirect: true
     }
   },
+  typescript: {
+    typeCheck: false
+  },
+  /*
+   ** Build configuration
+   */
+  build: {
+    transpile: ['vee-validate/dist/rules']
+    /*babel: {
+			plugins: [
+				['@babel/plugin-transform-typescript', { preserveConstEnums: true }],
+				['@babel/plugin-proposal-decorators', { legacy: true }],
+				['@babel/plugin-proposal-class-properties', { loose: true }],
+			],
+		},*/
+  }
 }
