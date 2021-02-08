@@ -13,7 +13,7 @@ export default {
   },
   // components: true,
   head: {
-    titleTemplate: 'Mastering Nuxt: %s',
+    titleTemplate: '%s | KakiBnB',
     htmlAttrs: {
       lang: 'en'
     },
