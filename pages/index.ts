@@ -8,11 +8,7 @@ import { Home } from '~/types'
   name: 'index',
   components: {
     HomeCard
-  }
-})
-export default class index extends Vue {
-  homes: Home[]
-
+  },
   head() {
     return {
       title: 'Homepage',
@@ -25,6 +21,9 @@ export default class index extends Vue {
       ]
     }
   }
+})
+export default class index extends Vue {
+  homes: Home[]
 
   created() {
     this.homes = homes.slice(0, 3).map((h) => new Home(h))

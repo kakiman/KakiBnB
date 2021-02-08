@@ -8,18 +8,33 @@ import { Home } from '~/types'
   name: 'search',
   components: {
     HomeRow
+  },
+  async asyncData({ route }) {
+    const query = this.$route.query
+    const response = await HomesStore.getHomesByLocation(query.lat, query.lng)
+    if (!response.ok) return new Error(response.statusText) //{ statusCode: badResponse.status, message: badResponse.statusText }
+    return {
+      homes: HomesStore.homeResults,
+      label: query.label,
+      lat: query.lat,
+      lng: query.lng,
+      dataLoad: true
+    }
+  },
+  head() {
+    return {
+      title: `Homes around ${this.$data.label}`,
+      meta: [
+        {
+          name: 'description',
+          content: 'This is a search home page!',
+          hid: 'description'
+        }
+      ]
+    }
   }
 })
 export default class search extends Vue {
-  label: string
-  $maps: any
-  homes: Home[]
-
-  head() {
-    return {
-      title: `Homes around ${this.label}`
-    }
-  }
 
   mounted() {
     this.updateMap()
@@ -61,14 +76,6 @@ export default class search extends Vue {
     next()
   }
 
-  async asyncData() {
-    const query = this.$route.query
-    const data = await HomesStore.getHomesByLocation(query.lat, query.lng)
-    return {
-      homes: data.json.hits,
-      label: query.label,
-      lat: query.lat,
-      lng: query.lng
     }
   }
 }

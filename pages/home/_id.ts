@@ -8,38 +8,38 @@ import ShortText from '~/components/ShortText'
   name: 'home-id',
   components: {
     ShortText
-  }
-})
-export default class homeId extends Vue {
-  home: Home
-  $maps: any
-
-  head() {
-    return {
-      title: this.home.title
-    }
-  }
-
-  mounted() {
-    this.$maps.showMap(this.$refs.map, this.home._geoloc.lat, this.home._geoloc.lng)
-  }
-
-  async asyncData() {
+  },
+  async asyncData({ route }) {
     const responses = await Promise.all([
-      HomesStore.getHome(this.$route.params.id),
-      HomesStore.getReviewsByHomeId(this.$route.params.id),
-      HomesStore.getUserByHomeId(this.$route.params.id)
+      HomesStore.getHome(route.params.id),
+      HomesStore.getReviewsByHomeId(route.params.id),
+      HomesStore.getUserByHomeId(route.params.id)
     ])
 
     const badResponse = responses.find((response) => !response.ok)
     if (badResponse) return new Error(badResponse.statusText) //{ statusCode: badResponse.status, message: badResponse.statusText }
 
     return {
-      home: responses[0].json,
-      reviews: responses[1].json.hits,
-      user: responses[2].json.hits[0]
+      home: HomesStore.home,
+      reviews: HomesStore.reviews,
+      user: HomesStore.homeOwner,
+      dataLoad: true
+    }
+  },
+  head() {
+    return {
+      title: this.$data.home.title,
+      meta: [
+        {
+          name: 'description',
+          content: 'This is a home detail page!',
+          hid: 'description'
+        }
+      ]
     }
   }
+})
+export default class homeId extends Vue {
 
   formatDate(dateStr: string | number | Date) {
     const date = new Date(dateStr)
