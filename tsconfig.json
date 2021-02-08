@@ -35,7 +35,8 @@
         "nuxt-i18n",
         "@nuxtjs/date-fns",
         "@nuxtjs/axios",
-        "@nuxtjs/auth-next"
+        "@nuxtjs/auth-next",
+        "googlemaps"
       ]
     },
     "exclude": [
