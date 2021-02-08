@@ -35,6 +35,11 @@ import { Home } from '~/types'
   }
 })
 export default class search extends Vue {
+  dataLoad: boolean = false
+  homes: Home[] = []
+  label: string = ''
+  lat: string = ''
+  lng: string = ''
 
   mounted() {
     this.updateMap()
@@ -46,14 +51,6 @@ export default class search extends Vue {
 
   updateMap() {
     this.$maps.showMap(this.$refs.map, this.lat, this.lng, this.getHomeMarkers())
-  }
-
-  lat(map: Vue | Element | Vue[] | Element[], lat: any, lng: any, arg3: any) {
-    throw new Error('Method not implemented.')
-  }
-
-  lng(map: Vue | Element | Vue[] | Element[], lat: any, lng: any, arg3: any) {
-    throw new Error('Method not implemented.')
   }
 
   getHomeMarkers() {
