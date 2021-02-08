@@ -66,15 +66,14 @@ export default class search extends Vue {
   }
 
   async beforeRouteUpdate(to: any, from: any, next: () => void) {
-    const data = await HomesStore.getHomesByLocation(to.query.lat, to.query.lng)
-    this.homes = data.json.hits
-    this.label = to.query.label
-    this.lat = to.query.lat
-    this.lng = to.query.lng
-    this.updateMap()
-    next()
-  }
-
+    const response = await HomesStore.getHomesByLocation(to.query.lat, to.query.lng)
+    if (response.ok) {
+      this.homes = HomesStore.homeResults
+      this.label = to.query.label
+      this.lat = to.query.lat
+      this.lng = to.query.lng
+      this.updateMap()
     }
+    next()
   }
 }
