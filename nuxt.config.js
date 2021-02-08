@@ -51,4 +51,36 @@ export default {
   dateFns: {
     format: 'dd/MM/yyyy'
   },
+  i18n: {
+    // langue par défaut
+    defaultLocale: 'fr',
+    // changement en mode lazy des langues
+    lazy: true,
+    // dossier contenant les fichiers de langues
+    langDir: 'i18n/',
+    // liste des locales
+    locales: [
+      {
+        name: 'Français',
+        code: 'fr',
+        iso: 'fr-FR',
+        file: 'fr-FR.js'
+      },
+      {
+        name: 'English',
+        code: 'en',
+        iso: 'en-GB',
+        file: 'en-GB.js'
+      }
+    ],
+    vueI18nLoader: false,
+    // seo désactivé pour le moment, potentiel problème avec le module d'authentification, test plus poussé à prévoir
+    seo: false,
+    // détection de la langue via un cookie
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'tkm_i18n',
+      alwaysRedirect: true
+    }
+  },
 }
