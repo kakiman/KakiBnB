@@ -1,7 +1,7 @@
 <div>
   Results for {{ label }}
   <br />
-  <div class="map" ref="map"></div>
+  <div class="map" ref="google-map"></div>
   <div v-if="homes.length > 0">
     <nuxt-link v-for="home in homes" :key="home.objectID" :to="`/home/${home.objectID}`">
       <home-row

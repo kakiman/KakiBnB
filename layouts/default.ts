@@ -16,7 +16,7 @@ export default class Default extends Vue {
     if (!place.geometry) return
 
     this.$router.push({
-      name: 'search',
+      path: '/search',
       query: {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng(),

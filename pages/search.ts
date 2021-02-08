@@ -10,14 +10,19 @@ import { Home } from '~/types'
     HomeRow
   },
   async asyncData({ route }) {
-    const query = this.$route.query
-    const response = await HomesStore.getHomesByLocation(query.lat, query.lng)
+    const query = route.query
+    const params = {
+      label: Array.isArray(query.label) ? (query.label[0] == null ? '' : query.label[0]) : query.label,
+      lat: Array.isArray(query.lat) ? (query.lat[0] == null ? '' : query.lat[0]) : query.lat,
+      lng: Array.isArray(query.lng) ? (query.lng[0] == null ? '' : query.lng[0]) : query.lng
+    }
+    const response = await HomesStore.getHomesByLocation(params)
     if (!response.ok) return new Error(response.statusText) //{ statusCode: badResponse.status, message: badResponse.statusText }
     return {
       homes: HomesStore.homeResults,
-      label: query.label,
-      lat: query.lat,
-      lng: query.lng,
+      label: HomesStore.searchLabel,
+      lat: HomesStore.searchLat,
+      lng: HomesStore.searchLng,
       dataLoad: true
     }
   },
@@ -51,6 +56,10 @@ export default class search extends Vue {
   }
 
   updateMap() {
+    this.homes = HomesStore.homeResults
+    this.label = HomesStore.searchLabel
+    this.lat = HomesStore.searchLat
+    this.lng = HomesStore.searchLng
     this.$maps.showMap(this.map, this.lat, this.lng, this.getHomeMarkers())
     this.dataLoad = true
   }
@@ -66,12 +75,13 @@ export default class search extends Vue {
   }
 
   async beforeRouteUpdate(to: any, from: any, next: () => void) {
-    const response = await HomesStore.getHomesByLocation(to.query.lat, to.query.lng)
+    const params = {
+      label: to.query.label,
+      lat: to.query.lat,
+      lng: to.query.lng
+    }
+    const response = await HomesStore.getHomesByLocation(params)
     if (response.ok) {
-      this.homes = HomesStore.homeResults
-      this.label = to.query.label
-      this.lat = to.query.lat
-      this.lng = to.query.lng
       this.updateMap()
     }
     next()
