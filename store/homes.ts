@@ -16,6 +16,9 @@ export default class HomesModule extends VuexModule {
   reviews: Review[] = []
   homeOwner: Owner = new Owner()
   homeResults: Home[] = []
+  searchLat: string = ''
+  searchLng: string = ''
+  searchLabel: string = ''
 
   @VuexMutation
   setCurrentHome(data: any) {
@@ -35,6 +38,21 @@ export default class HomesModule extends VuexModule {
   @VuexMutation
   setCurrentHomeResults(hits: any) {
     this.homeResults = hits ? hits.map((h: Partial<Home> | undefined) => new Home(h)) : []
+  }
+
+  @VuexMutation
+  setCurrentSearchLat(lat: string) {
+    this.searchLat = lat
+  }
+
+  @VuexMutation
+  setCurrentSearchLng(lng: string) {
+    this.searchLng = lng
+  }
+
+  @VuexMutation
+  setCurrentSearchLabel(label: string) {
+    this.searchLabel = label
   }
 
   @VuexAction
@@ -90,12 +108,15 @@ export default class HomesModule extends VuexModule {
   }
 
   @VuexAction
-  async getHomesByLocation(lat: string | (string | null)[], lng: string | (string | null)[], radiusInMeters = 1500) {
+  async getHomesByLocation(params: { label: string; lat: string; lng: string }) {
+    this.setCurrentSearchLat(params.lat)
+    this.setCurrentSearchLng(params.lng)
+    this.setCurrentSearchLabel(params.label)
     return unWrap(
       await $api
         .create('homes/query', {
-          aroundLatLng: `${lat},${lng}`,
-          aroundRadius: radiusInMeters,
+          aroundLatLng: `${params.lat},${params.lng}`,
+          aroundRadius: 1500,
           hitsPerPage: 10,
           attributesToHighlight: []
         })
