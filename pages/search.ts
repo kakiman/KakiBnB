@@ -1,4 +1,4 @@
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Vue, Component, Ref } from 'nuxt-property-decorator'
 import { HomesStore } from '~/store/homes'
 
 import HomeRow from '~/components/HomeRow'
@@ -35,6 +35,7 @@ import { Home } from '~/types'
   }
 })
 export default class search extends Vue {
+  @Ref('google-map') readonly map!: HTMLDivElement
   dataLoad: boolean = false
   homes: Home[] = []
   label: string = ''
@@ -50,7 +51,8 @@ export default class search extends Vue {
   }
 
   updateMap() {
-    this.$maps.showMap(this.$refs.map, this.lat, this.lng, this.getHomeMarkers())
+    this.$maps.showMap(this.map, this.lat, this.lng, this.getHomeMarkers())
+    this.dataLoad = true
   }
 
   getHomeMarkers() {
