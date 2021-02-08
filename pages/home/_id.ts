@@ -1,8 +1,8 @@
 import { HomesStore } from './../../store/homes'
 import { Vue, Component } from 'nuxt-property-decorator'
 
-import ShortText from '~/components/ShortText/ShortText'
 import { Home } from '~/types'
+import ShortText from '~/components/ShortText'
 
 @Component({
   name: 'home-id',

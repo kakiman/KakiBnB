@@ -1,7 +1,7 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import homes from '~/static/data/homes.json'
 
-import HomeCard from '~/components/HomeCard/HomeCard'
+import HomeCard from '~/components/HomeCard'
 import { Home } from '~/types'
 
 @Component({

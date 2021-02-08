@@ -1,7 +1,7 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import { HomesStore } from '~/store/homes'
 
-import HomeRow from '~/components/HomeRow/HomeRow'
+import HomeRow from '~/components/HomeRow'
 import { Home } from '~/types'
 
 @Component({
