@@ -48,4 +48,7 @@ export default {
     path: './env/',
     filename: `.env.${process.env.NODE_ENV}`
   },
+  dateFns: {
+    format: 'dd/MM/yyyy'
+  },
 }
