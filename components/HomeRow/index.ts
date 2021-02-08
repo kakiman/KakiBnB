@@ -1,3 +1,2 @@
 import HomeRow from './HomeRow'
-
-export default { HomeRow }
+export default HomeRow

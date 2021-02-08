@@ -1,3 +1,2 @@
 import ShortText from './ShortText'
-
-export default { ShortText }
+export default ShortText

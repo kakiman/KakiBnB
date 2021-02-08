@@ -1,3 +1,2 @@
 import HomeCard from './HomeCard'
-
-export default { HomeCard }
+export default HomeCard
