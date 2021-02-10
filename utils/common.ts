@@ -32,3 +32,8 @@ export function getErrorResponse(error: { message: any }) {
     statusText: error.message
   }
 }
+
+export function formatDate(dateStr: string | number | Date) {
+  const date = new Date(dateStr)
+  return date.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })
+}

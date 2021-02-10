@@ -55,9 +55,4 @@ export default class homeId extends Vue {
     this.$maps.showMap(this.map, this.home._geoloc.lat, this.home._geoloc.lng)
     this.dataLoad = true
   }
-
-  formatDate(dateStr: string | number | Date) {
-    const date = new Date(dateStr)
-    return date.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })
-  }
 }
