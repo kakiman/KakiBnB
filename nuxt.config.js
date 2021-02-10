@@ -11,7 +11,17 @@ export default {
     appVersion: process.env.VUE_APP_VERSION,
     algoliaWsURL: 'https://APP_ID-dsn.algolia.net/1/indexes/'
   },
-  // components: true,
+  components: [
+    {
+      path: '~/components/',
+      pattern: '**/*.vue'
+    },
+    {
+      path: '~/components/Errors',
+      pattern: '**/*.vue',
+      prefix: 'err'
+    }
+  ],
   head: {
     titleTemplate: '%s | KakiBnB',
     htmlAttrs: {
