@@ -1,0 +1,45 @@
+.color-container {
+  display: flex;
+  text-align: center;
+  justify-content: flex-end;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      display: inline-block;
+      padding: 5px;
+    }
+  }
+  p {
+    align-self: center;
+  }
+  .feather {
+    position: relative;
+    top: 0px;
+    cursor: pointer;
+    padding: 7px;
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    margin: 0;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    :hover {
+      top: -3px;
+    }
+    &.preferred {
+      border-color: var(--color-primary);
+    }
+    &.selected {
+      .svgIcon {
+        color: var(--color-primary);
+        fill: var(--color-primary);
+        > svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+  }
+}

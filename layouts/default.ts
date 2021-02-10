@@ -1,7 +1,12 @@
 import { Vue, Component, Prop, Ref } from 'nuxt-property-decorator'
 
+import ColorModePicker from '~/components/ColorModePicker'
+
 @Component({
-  name: 'default'
+  name: 'default',
+  components: {
+    ColorModePicker
+  }
   //middleware: ['auth']
 })
 export default class Default extends Vue {

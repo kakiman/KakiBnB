@@ -1,0 +1,16 @@
+<div class="color-container">
+  <ul>
+    <li v-for="color of colors" :key="color" @click="updateColorMode(color)" class="feather" :class="getClasses(color)">
+      <SvgIcon :name="color" />
+    </li>
+  </ul>
+  <p>
+    Color mode:
+    <b>{{ $colorMode.preference }}</b>
+    <span v-if="$colorMode.preference === 'system'">
+      (
+      <i>{{ $colorMode.value }}</i>
+      mode detected)
+    </span>
+  </p>
+</div>

@@ -36,6 +36,7 @@ export default {
       }
     ]
   },
+  css: ['@/assets/main.css'],
   router: {
     prefetchLinks: false
   },
@@ -53,7 +54,13 @@ export default {
     // Doc: https://nuxt-community.github.io/nuxt-i18n/
     'nuxt-i18n'
   ],
-  buildModules: ['@nuxtjs/dotenv', '@nuxt/typescript-build', '@nuxtjs/tailwindcss'],
+  buildModules: [
+    '@nuxtjs/dotenv',
+    '@nuxt/typescript-build',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/svg',
+    '@nuxtjs/color-mode'
+  ],
   dotenv: {
     path: './env/',
     filename: `.env.${process.env.NODE_ENV}`
