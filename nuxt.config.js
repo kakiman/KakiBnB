@@ -49,7 +49,9 @@ export default {
     filename: `.env.${process.env.NODE_ENV}`
   },
   dateFns: {
-    format: 'dd/MM/yyyy'
+    locales: ['en-GB', 'fr'],
+    defaultLocale: 'fr',
+    format: 'MMM yyyy'
   },
   i18n: {
     // langue par défaut
