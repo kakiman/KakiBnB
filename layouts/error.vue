@@ -1,10 +1,6 @@
 <template>
-  <div style="text-align: center;">
-    <img src="https://media1.tenor.com/images/99f00b32545bf5b5db8bf8ecbb7f0aec/tenor.gif?itemid=7971019" />
-    <br />
-    <br />
-    <h1>Error!</h1>
-    {{ error.message }} {{ error.statusCode }}
+  <div class="nuxt-error">
+    <component :is="errorPage" :error="error" />
   </div>
 </template>
 <script lang="ts">
@@ -27,18 +23,18 @@ export default class NuxtError extends Vue {
   @Prop({ type: Object, default: () => {}, required: true })
   error: any
 
+  head() {
+    return {
+      title: 'erreur ' + this.error.statusCode
+    }
+  }
+
   get errorPage(): any {
     if (this.error.statusCode === 404) {
       return error404
     }
     // catch everything else
     return error500
-  }
-
-  head() {
-    return {
-      title: 'BIG PROBLEMS'
-    }
   }
 }
 </script>

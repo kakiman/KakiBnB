@@ -25,11 +25,14 @@ export function getOkResponse(response: { json?: any; ok?: any; status?: any; st
   }
 }
 
-export function getErrorResponse(error: { message: any }) {
+export function getErrorResponse(error: any) {
+  console.log('request Error : ')
+  console.log('status : ' + error.response.data.status)
+  console.log('message : ' + error.response.data.message)
   return {
     ok: false,
-    status: 500,
-    statusText: error.message
+    status: error.response.status,
+    statusText: error.response.statusText
   }
 }
 

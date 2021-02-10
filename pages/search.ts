@@ -17,7 +17,7 @@ import { Home } from '~/types'
       lng: Array.isArray(query.lng) ? (query.lng[0] == null ? '' : query.lng[0]) : query.lng
     }
     const response = await HomesStore.getHomesByLocation(params)
-    if (!response.ok) return new Error(response.statusText) //{ statusCode: badResponse.status, message: badResponse.statusText }
+    if (!response.ok) throw response //{ statusCode: badResponse.status, message: badResponse.statusText }
     return {
       homes: HomesStore.homeResults,
       label: HomesStore.searchLabel,

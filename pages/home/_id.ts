@@ -17,7 +17,7 @@ import { Home, Host, Review } from '~/types'
     ])
 
     const badResponse = responses.find((response) => !response.ok)
-    if (badResponse) return new Error(badResponse.statusText) //{ statusCode: badResponse.status, message: badResponse.statusText }
+    if (badResponse) throw badResponse //{ statusCode: badResponse.status, message: badResponse.statusText }
 
     return {
       home: HomesStore.home,
