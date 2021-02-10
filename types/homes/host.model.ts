@@ -1,4 +1,4 @@
-export class Owner {
+export class Host {
   objectID: string = ''
   description: string = ''
   name: string = ''
@@ -7,7 +7,7 @@ export class Owner {
   image: string = ''
   reviewCount: number
 
-  constructor(init?: Partial<Owner>) {
+  constructor(init?: Partial<Host>) {
     Object.assign(this, init)
   }
 }

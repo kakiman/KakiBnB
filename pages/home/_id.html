@@ -26,14 +26,16 @@
     <short-text :text="review.comment" :target="150" />
     <br />
   </div>
-  <img :src="user.image" />
-  <br />
-  {{ user.name }}
-  <br />
-  {{ formatDate(user.joined) }}
-  <br />
-  {{ user.reviewCount }}
-  <br />
-  {{ user.description }}
-  <br />
+  <div class="host-info" v-if="host">
+    <img :src="host.image" />
+    <br />
+    {{ host.name }}
+    <br />
+    {{ $dateFns.format(host.joined, $nuxt.context.env.dateFormat) }}
+    <br />
+    {{ host.reviewCount }}
+    <br />
+    {{ host.description }}
+    <br />
+  </div>
 </div>

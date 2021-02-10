@@ -2,7 +2,7 @@ import { HomesStore } from './../../store/homes'
 import { Vue, Component, Ref } from 'nuxt-property-decorator'
 
 import ShortText from '~/components/ShortText'
-import { Home, Owner, Review } from '~/types'
+import { Home, Host, Review } from '~/types'
 
 @Component({
   name: 'home-id',
@@ -22,7 +22,7 @@ import { Home, Owner, Review } from '~/types'
     return {
       home: HomesStore.home,
       reviews: HomesStore.reviews,
-      user: HomesStore.homeOwner,
+      host: HomesStore.host,
       dataLoad: true
     }
   },
@@ -43,14 +43,15 @@ export default class homeId extends Vue {
   dataLoad: boolean = false
   home: Home = new Home()
   reviews: Review[] = []
-  user: Owner = new Owner()
+  host: Host
 
   @Ref('google-map') readonly map!: HTMLDivElement
 
   mounted() {
+    console.log('mounted')
     this.home = HomesStore.home
     this.reviews = HomesStore.reviews
-    this.user = HomesStore.homeOwner
+    this.host = HomesStore.host
     this.$maps.showMap(this.map, this.home._geoloc.lat, this.home._geoloc.lng)
     this.dataLoad = true
   }
